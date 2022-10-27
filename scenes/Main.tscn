@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 
-[node name="Control" type="Control"]
+[node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -62,5 +62,35 @@ margin_right = 761.0
 margin_bottom = 317.0
 text = "IP:"
 
+[node name="ErrorMessagePanel" type="PanelContainer" parent="."]
+visible = false
+margin_left = 244.0
+margin_top = 165.0
+margin_right = 648.0
+margin_bottom = 329.0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="ErrorMessagePanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 397.0
+margin_bottom = 157.0
+
+[node name="Label" type="Label" parent="ErrorMessagePanel/AspectRatioContainer"]
+margin_left = 105.5
+margin_top = 68.0
+margin_right = 284.5
+margin_bottom = 82.0
+text = "Failed connection. try again."
+
+[node name="ConfirmButton" type="Button" parent="ErrorMessagePanel/AspectRatioContainer"]
+margin_left = 120.0
+margin_top = 130.0
+margin_right = 270.0
+margin_bottom = 150.0
+size_flags_vertical = 8
+text = "Confirm"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="EnterButton" to="." method="_on_EnterButton_pressed"]
 [connection signal="pressed" from="CreateButton" to="." method="_on_CreateButton_pressed"]
+[connection signal="pressed" from="ErrorMessagePanel/AspectRatioContainer/ConfirmButton" to="." method="_on_ConfirmButton_pressed"]
